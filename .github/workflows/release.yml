@@ -31,7 +31,7 @@ jobs:
           # Install appimagetool dependency
           sudo apt-get -y install desktop-file-utils
 
-          set -u
+          set -uex
 
           # --------------------------- #
           # ---  initial variables  --- #
@@ -122,6 +122,8 @@ jobs:
                   ./appimagetool.AppDir/AppRun --comp zstd "$APPDIR" -n -u \
                       "gh-releases-zsync|$GITHUB_REPOSITORY_OWNER|Brave-AppImage|$TYPE|Brave*.AppImage.zsync" \
                       "Brave-$TYPE-$TAG-x86_64.AppImage"
+
+                  ls -larth
 
                   mkdir dist && mv Brave*.AppImage* dist/.
 
